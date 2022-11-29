@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-	for(int i = 0; i < 256; i += 1) {
+	for(int i = 0; i < 16; i += 1) {
 		printf("\x1B[38;5;%dmHello world!\x1B[0m\n", i);
 	}
 	return 0;
