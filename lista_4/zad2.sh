@@ -104,9 +104,14 @@ do
 	iwyslane=$(cat /proc/net/dev | grep "enp0" | awk -v x=10 '{print $x}')
 
 	max_pobrane=0
+	avg_wyslane=0
 	max_wyslane=0
+	avg_pobrane=0
+
 	for i in {29..0}
 	do
+		avg_pobrane=$(echo "$avg_pobrane+${pobrane[i]}" | bc)
+		avg_wyslane=$(echo "$avg_wyslane+${wyslane[i]}" | bc)
 		if [ $i -ne 0 ]
 		then
 			pobrane[i]=${pobrane[i-1]}
@@ -128,8 +133,12 @@ do
 	done
 
 	echo -e "\e[33m	Wykres danych pobranych\e[37m"
+	echo -n "	Srednia danych pobranych: "
+	echo "scale=2; $avg_pobrane/30" | bc -l
 	wypiszWykresPobrane
 	echo -e "\e[33m	Wykres danych wyslanych\e[37m"
+	echo -n "	Srednia danych wyslanych: "
+	echo "scale=2; $avg_wyslane/30" | bc -l
 	wypiszWykresWyslane
 	
 	ipobrane_stare=$ipobrane
