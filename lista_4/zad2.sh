@@ -73,7 +73,7 @@ do
 
 	# Wypisywanie baterii
 
-	echo -n "Bateria:|"
+	echo -en "\e[33mBateria:\e[37m|"
 	baterie=$(cat /sys/class/power_supply/BAT0/uevent | grep "POWER_SUPPLY_ENERGY_FULL=" | awk -F "=" '{print $2}')
 	actual_baterie=$(cat /sys/class/power_supply/BAT0/uevent | grep "POWER_SUPPLY_ENERGY_NOW=" | awk -F "=" '{print $2}')
 	sto=100
@@ -90,11 +90,21 @@ do
 
 	mem_total=$(cat /proc/meminfo | grep "^MemTotal" | awk '{print $2}')
 	mem=$(cat /proc/meminfo | grep "^MemFree" | awk '{print $2}')
-	echo -e "Aktualne wykorzystanie pamieci:|" $(echo "scale=1; ($mem_total-$mem)/$mem_total*100" | bc -l) "%") | column -t -s "|" -o "|"
+	echo -e "\e[33mAktualne wykorzystanie pamieci:\e[37m|" $(echo "scale=1; ($mem_total-$mem)/$mem_total*100" | bc -l) "%"
 	
-	#
-	# Miejsce na oblicznie cpu
-	#
+	echo "$linia"
+
+	# Wypisywanie wykorzystania procesora
+
+	echo -e "\n\e[33mWykorzystanie CPU\e[37m"
+
+	notidle=$(sed '2q;d' /proc/stat | awk '{print $2+$3+$4+$6+$7+$8}')
+	total=$(sed '2q;d' /proc/stat | awk '{print $2+$3+$4+$5+$6+$7+$8}')
+	cpu0=$(echo "x=($notidle/$total)*100; scale=2; x/1" | bc)
+
+	cherce=$(cat /proc/cpuinfo | grep "MHz" | awk '{print $4}')
+
+	echo "CPU0:|${cpu0}% $cherce MHz") | column -t -s "|" -o "|"
 	
 	# Wykres danych z sieci
 
@@ -134,11 +144,33 @@ do
 
 	echo -e "\e[33m	Wykres danych pobranych\e[37m"
 	echo -n "	Srednia danych pobranych: "
-	echo "scale=2; $avg_pobrane/30" | bc -l
+	avg=$(echo "scale=2; $avg_pobrane/30" | bc -l)
+	if (( $avg < 1000 ))
+	then
+		echo "${avg}B/s"
+	elif (( $avg < 1000000 ))
+	then
+		avg=$(echo "$avg/1000; scale=1" | bc -l)
+		echo "${avg}kB/s"
+	else
+		avg=$(echo "$avg/1000000; scale=1" | bc -l)
+		echo "${avg}MB/s"
+	fi
 	wypiszWykresPobrane
 	echo -e "\e[33m	Wykres danych wyslanych\e[37m"
 	echo -n "	Srednia danych wyslanych: "
-	echo "scale=2; $avg_wyslane/30" | bc -l
+	avg=$(echo "scale=2; $avg_wyslane/30" | bc -l)
+	if (( $avg < 1000 ))
+	then
+		echo "${avg}B/s"
+	elif (( $avg < 1000000 ))
+	then
+		avg=$(echo "$avg/1000; scale=1" | bc -l)
+		echo "${avg}kB/s"
+	else
+		avg=$(echo "$avg/1000000; scale=1" | bc -l)
+		echo "${avg}MB/s"
+	fi
 	wypiszWykresWyslane
 	
 	ipobrane_stare=$ipobrane
