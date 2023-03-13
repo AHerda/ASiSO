@@ -6,7 +6,7 @@ int tail = -1;
 
 void add(int variable)
 {
-    if(tail == 100-1)
+    if(tail == 99)
     {
         printf("Overflow");
     }
