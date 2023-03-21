@@ -52,7 +52,7 @@ div.projekt {
 
 div.projekt img {
     position: relative;
-    margin: auto;
+    margin: 20px;
     padding: auto;
     border-radius: 10%;
     width: 50%;
@@ -61,8 +61,8 @@ div.projekt img {
 }
 
 div.projekt img:hover {
-    border-radius: 20%;
-    border: 2px solid #146C94;
+    border: 5px solid #146C94;
+    margin: 15px;
 }
 
 div.projekt p {
