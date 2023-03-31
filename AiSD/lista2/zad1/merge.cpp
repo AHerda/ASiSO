@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <stdio.h>
+#include <unistd.h>
 
 int size_global;
 int counter_if = 0, counter_swap = 0;
@@ -9,18 +10,32 @@ void merge_sort(int* tab, int const begin, int const end);
 void merge(int* tab, int const left, int const mid, int const right);
 
 int main(int argc, char** argv) {
-    size_global = argc - 1;
-    int tab[size_global];
+    int* tab;
+    if(argc == 1) {
+        setbuf(stdin, NULL);
+        scanf("%d", &size_global);
 
-    for(int i = 1; i < argc; i++) {
-        sscanf(argv[i], "%d", &(tab[i - 1]));
+        tab = new int[size_global];
+
+        for(int i = 0; i < size_global; i++) {
+            scanf("%d", &(tab[i]));
+        }
     }
+    else {
+        size_global = argc - 1;
+        tab = new int[size_global];
+
+        for(int i = 1; i < argc; i++) {
+            sscanf(argv[i], "%d", &(tab[i - 1]));
+        }
+    }
+
     if(size_global < 40) {
         print_tab(tab, size_global);
     }
 
 
-    merge_sort(tab, 0, argc - 2);
+    merge_sort(tab, 0, size_global - 1);
 
     if(size_global < 40) {
         print_tab(tab, size_global);
@@ -96,8 +111,6 @@ void merge(int* tab, int const left, int const mid, int const right) {
     }
 
     while (ri < size_right) {
-        int temp = tab[i];
-
         tab[i] = tab_right[ri];
         ri++;
         i++;

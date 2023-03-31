@@ -7,12 +7,27 @@ void print_tab(int* tab, int size, int start = 0);
 void quick_sort(int* tab, int lewy, int prawy);
 
 int main(int argc, char** argv) {
-    size_global = argc - 1;
-    int tab[size_global];
+    int* tab;
+    
+    if(argc == 1) {
+        setbuf(stdin, NULL);
+        scanf("%d", &size_global);
 
-    for(int i = 1; i < argc; i++) {
-        sscanf(argv[i], "%d", &(tab[i - 1]));
+        tab = new int[size_global];
+
+        for(int i = 0; i < size_global; i++) {
+            scanf("%d", &(tab[i]));
+        }
     }
+    else {
+        size_global = argc - 1;
+        tab = new int[size_global];
+
+        for(int i = 1; i < argc; i++) {
+            sscanf(argv[i], "%d", &(tab[i - 1]));
+        }
+    }
+
     if(size_global < 40) {
         print_tab(tab, size_global);
     }
