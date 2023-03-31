@@ -8,7 +8,7 @@ void quick_sort(int* tab, int lewy, int prawy);
 
 int main(int argc, char** argv) {
     int* tab;
-    
+
     if(argc == 1) {
         setbuf(stdin, NULL);
         scanf("%d", &size_global);
@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
         print_tab(tab, size_global);
     }
 
-    quick_sort(tab, 0, argc - 2);
+    quick_sort(tab, 0, size_global - 1);
 
     if(size_global < 40) {
         print_tab(tab, size_global);

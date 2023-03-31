@@ -28,12 +28,12 @@ int main(int argc, char** argv) {
             sscanf(argv[i], "%d", &(tab[i - 1]));
         }
     }
-    
+
     if(size_global < 40) {
         print_tab(tab, size_global);
     }
 
-    insertion_sort(argc - 1, tab);
+    insertion_sort(size_global, tab);
 
     print_tab(tab, size_global);
 
