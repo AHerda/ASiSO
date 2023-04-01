@@ -40,6 +40,10 @@ int main(int argc, char** argv) {
     for(int i = 0; i + 1 < size_global; i++) {
         if(tab[i] > tab[i + 1]) return 0;
     }
+
+    std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl;
+    std::cout << std::endl << size_global << " " << counter_if << " " << counter_swap << std::endl;
+
     return 1;
 }
 
