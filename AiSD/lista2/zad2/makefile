@@ -5,9 +5,13 @@ all: main
 main: main.cpp
 	g++ -O3 -o main main.cpp
 
-git.o:
-	git add *pp
+plot: wykresy.py
+	./main
+	python3 wykresy.py
+
+git:
+	git add *.cpp *.py
 	git commit -m "Update"
 
-clean.o:
-	rm generator merge quick insertion dual_quick hybrid *.o
+clean:
+	rm *.txt *.png main
