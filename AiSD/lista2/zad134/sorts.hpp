@@ -56,5 +56,6 @@ void partition(int* tab, int low, int high, int* left_pivot, int* right_pivot);
 
 //hybrid (quick => insertion)
 std::string quick_sort_hybrid(int* tab, int lewy, int prawy);
+void insertion_sort_hybrid(int n, int* tab);
 
 #endif

@@ -74,7 +74,7 @@ std::string quick_sort_hybrid(int* tab, int lewy, int prawy) {
 	
 	if(j > lewy) {
         if(j - lewy + 1 <= 16) {
-            insertion_sort(j - lewy + 1, &tab[lewy]);
+            insertion_sort_hybrid(j - lewy + 1, &tab[lewy]);
         }
         else {
 		    quick_sort_hybrid(tab, lewy, j);
@@ -82,7 +82,7 @@ std::string quick_sort_hybrid(int* tab, int lewy, int prawy) {
     }
 	if(i < prawy) {
         if(prawy - i + 1 <= 16) {
-            insertion_sort(prawy - i + 1, &tab[i]);
+            insertion_sort_hybrid(prawy - i + 1, &tab[i]);
         }
         else {
 		    quick_sort_hybrid(tab, i, prawy);
@@ -92,7 +92,7 @@ std::string quick_sort_hybrid(int* tab, int lewy, int prawy) {
     return std::to_string(prawy + 1 - lewy) + " " + std::to_string(counter_if) + " " + std::to_string(counter_swap) + "\n";
 }
 
-std::string insertion_sort(int n, int* tab) {
+void insertion_sort_hybrid(int n, int* tab) {
 	for(int i = 1; i < n; i++) {
 		int key = tab[i];
 		int j = i - 1;
