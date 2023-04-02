@@ -1,12 +1,8 @@
 #include <iostream>
 #include "sorts.hpp"
 
-int size_global;
-int counter_if = 0, counter_swap = 0;
-
 int main(int argc, char** argv) {
     int* tab;
-
     if(argc == 1) {
         setbuf(stdin, NULL);
         scanf("%d", &size_global);
@@ -30,31 +26,23 @@ int main(int argc, char** argv) {
         print_tab(tab, size_global);
     }
 
-    quick_sort(tab, 0, size_global - 1);
+    quick_sort_hybrid(tab, 0, size_global - 1);
 
     if(size_global < 40) {
         print_tab(tab, size_global);
     }
 
-    for(int i = 0; i + 1 < size_global; i++) {
-        if(tab[i] > tab[i + 1]) return 0;
-    }
-
     if(size_global < 40) { std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl; }
     std::cout << size_global << " " << counter_if << " " << counter_swap << std::endl;
 
+    for(int i = 0; i + 1 < size_global; i++) {
+        if(tab[i] > tab[i + 1]) return 0;
+    }
     return 1;
 }
 
-
-void print_tab(int* tab, int size, int start) {
-    for (int i = start; i < size; i++)
-        std::cout << tab[i] << " ";
-    std::cout << std::endl;
-}
-
-void quick_sort(int* tab, int lewy, int prawy) {
-	if(prawy <= lewy) return;
+std::string quick_sort_hybrid(int* tab, int lewy, int prawy) {
+	if(prawy <= lewy) return std::to_string(prawy + 1 - lewy) + " " + std::to_string(counter_if) + " " + std::to_string(counter_swap) + "\n";
 	
 	int i = lewy - 1;
 	int j = prawy + 1;
@@ -72,7 +60,7 @@ void quick_sort(int* tab, int lewy, int prawy) {
         }
 		
 		if(i <=  j) {
-            swap(&tab[i], &tab[j]);
+            swap(&tab[i], &tab[j], counter_swap);
         }
 		else {
             break;
@@ -84,16 +72,44 @@ void quick_sort(int* tab, int lewy, int prawy) {
     }
     
 	
-	if(j > lewy)
-		quick_sort(tab, lewy, j);
-	if(i < prawy)
-		quick_sort(tab, i, prawy);
+	if(j > lewy) {
+        if(j - lewy + 1 <= 16) {
+            insertion_sort(j - lewy + 1, &tab[lewy]);
+        }
+        else {
+		    quick_sort_hybrid(tab, lewy, j);
+        }
+    }
+	if(i < prawy) {
+        if(prawy - i + 1 <= 16) {
+            insertion_sort(prawy - i + 1, &tab[i]);
+        }
+        else {
+		    quick_sort_hybrid(tab, i, prawy);
+        }
+    }
+
+    return std::to_string(prawy + 1 - lewy) + " " + std::to_string(counter_if) + " " + std::to_string(counter_swap) + "\n";
 }
 
-void swap(int* a, int* b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+std::string insertion_sort(int n, int* tab) {
+	for(int i = 1; i < n; i++) {
+		int key = tab[i];
+		int j = i - 1;
 
-    counter_swap++;
+        counter_if++;
+		while(j >= 0 && tab[j] > key) {
+			tab[j + 1] = tab[j];
+			j -= 1;
+            
+            counter_swap++;
+            counter_if++;
+		}
+		
+		tab[j + 1] = key;
+        
+        if(n < 40) {
+            print_tab(tab, n);
+        }
+	}
 }

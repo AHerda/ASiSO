@@ -1,10 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <unistd.h>
+#include <string>
 #include "sorts.hpp"
-
-int size_global;
-int counter_if = 0, counter_swap = 0;
 
 int main(int argc, char** argv) {
     int* tab;
@@ -31,35 +29,26 @@ int main(int argc, char** argv) {
         print_tab(tab, size_global);
     }
 
-
     merge_sort(tab, 0, size_global - 1);
 
     if(size_global < 40) {
         print_tab(tab, size_global);
     }
 
-    for(int i = 0; i + 1 < size_global; i++) {
-        if(tab[i] > tab[i + 1]) return 0;
-    }
-
     if(size_global < 40) { std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl; }
     std::cout << size_global << " " << counter_if << " " << counter_swap << std::endl;
 
+    for(int i = 0; i + 1 < size_global; i++) {
+        if(tab[i] > tab[i + 1]) return 0;
+    }
     return 1;
 }
 
 
-
-void print_tab(int* tab, int size, int start) {
-    for (int i = start; i < size; i++)
-        std::cout << tab[i] << " ";
-    std::cout << std::endl;
-}
-
-void merge_sort(int* tab, int const begin, int const end)
+std::string merge_sort(int* tab, int const begin, int const end)
 {
     if (begin >= end)
-        return;
+        return std::to_string(end + 1 - begin) + " " + std::to_string(counter_if) + " " + std::to_string(counter_swap) + "\n";;
  
     int mid = begin + (end - begin) / 2;
     merge_sort(tab, begin, mid);
@@ -69,6 +58,8 @@ void merge_sort(int* tab, int const begin, int const end)
     if(size_global < 40) {
         print_tab(tab, end + 1, begin);
     }
+
+    return std::to_string(end + 1 - begin) + " " + std::to_string(counter_if) + " " + std::to_string(counter_swap) + "\n";
 }
 
 void merge(int* tab, int const left, int const mid, int const right) {

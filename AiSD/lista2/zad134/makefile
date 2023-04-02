@@ -1,9 +1,6 @@
 #MAKEFILE
 
-all: generator merge quick insertion dual_quick main
-
-main: main.cpp
-	g++ -O3 -o main main.cpp
+all: generator merge quick insertion dual_quick hybrid
 
 generator: generator.cpp
 	g++ -O3 -o generator generator.cpp
@@ -20,9 +17,12 @@ insertion: insertion.cpp
 dual_quick: dual_quick.cpp
 	g++ -O3 -o dual_quick dual_quick.cpp
 
+hybrid: hybrid.cpp
+	g++ -O3 -o hybrid hybrid.cpp
+
 git:
 	git add *pp
 	git commit -m "Update"
 
 clean:
-	rm generator merge quick insertion
+	rm generator merge quick insertion dual_quick hybrid *.o

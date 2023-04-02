@@ -7,6 +7,7 @@
 
 std::mt19937 mt(std::random_device{}()); 
 
+
 int main(int argc, char** argv) {
     if(argc != 3) return 0;
 
@@ -32,6 +33,8 @@ int main(int argc, char** argv) {
     return 1;
 }
 
+
+
 void generator_rand(std::vector<int>* tab, int n) {
     for(int i = 0; i < n; i++) {
         tab->push_back(mt() % (2 * n));
@@ -56,11 +59,8 @@ void generator_desc(std::vector<int>* tab, int n) {
     *tab = std::vector<int>(rand_desc.begin(), rand_desc.end());
 }
 
-void print_tab(std::vector<int>* tab, int size) {
-    for (int i = 0; i < size; i++) {
-        std::cout << (*tab)[i];
-        if(i + 1 != size) {
-            std::cout << " ";
-        }
+void generator_rand_tab(int* tab, int n) {
+    for(int i = 0; i < n; i++) {
+        tab[i] = mt() % (2 * n);
     }
 }
