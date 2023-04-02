@@ -61,7 +61,7 @@ std::string insertion_sort(int n, int* tab) {
 		tab[j + 1] = key;
         
         if(n < 40) {
-            //print_tab(tab, n);
+            print_tab(tab, n);
         }
 	}
 
