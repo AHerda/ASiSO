@@ -1,10 +1,8 @@
 #include <iostream>
+#include "sorts.hpp"
 
 int size_global;
 int counter_if = 0, counter_swap = 0;
-
-void print_tab(int* tab, int size, int start = 0);
-void quick_sort(int* tab, int lewy, int prawy);
 
 int main(int argc, char** argv) {
     int* tab;
@@ -42,8 +40,8 @@ int main(int argc, char** argv) {
         if(tab[i] > tab[i + 1]) return 0;
     }
 
-    std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl;
-    std::cout << std::endl << size_global << " " << counter_if << " " << counter_swap << std::endl;
+    if(size_global < 40) { std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl; }
+    std::cout << size_global << " " << counter_if << " " << counter_swap << std::endl;
 
     return 1;
 }
@@ -74,12 +72,7 @@ void quick_sort(int* tab, int lewy, int prawy) {
         }
 		
 		if(i <=  j) {
-            int temp;
-			temp = tab[j];
-            tab[j] = tab[i];
-            tab[i] = temp;
-
-            counter_swap++;
+            swap(&tab[i], &tab[j]);
         }
 		else {
             break;
@@ -95,4 +88,12 @@ void quick_sort(int* tab, int lewy, int prawy) {
 		quick_sort(tab, lewy, j);
 	if(i < prawy)
 		quick_sort(tab, i, prawy);
+}
+
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+
+    counter_swap++;
 }

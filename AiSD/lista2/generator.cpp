@@ -3,13 +3,9 @@
 #include <random>
 #include <set>
 #include <vector>
+#include "sorts.hpp"
 
 std::mt19937 mt(std::random_device{}()); 
-
-void print_tab(std::vector<int>* tab, int size);
-void generator_rand(std::vector<int>* tab, int n);
-void generator_asc(std::vector<int>* tab, int n);
-void generator_desc(std::vector<int>* tab, int n);
 
 int main(int argc, char** argv) {
     if(argc != 3) return 0;

@@ -1,13 +1,10 @@
 #include <iostream>
 #include <stdio.h>
 #include <unistd.h>
+#include "sorts.hpp"
 
 int size_global;
 int counter_if = 0, counter_swap = 0;
-
-void print_tab(int* tab, int size, int start = 0);
-void merge_sort(int* tab, int const begin, int const end);
-void merge(int* tab, int const left, int const mid, int const right);
 
 int main(int argc, char** argv) {
     int* tab;
@@ -45,8 +42,8 @@ int main(int argc, char** argv) {
         if(tab[i] > tab[i + 1]) return 0;
     }
 
-    std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl;
-    std::cout << std::endl << size_global << " " << counter_if << " " << counter_swap << std::endl;
+    if(size_global < 40) { std::cout << std::endl << "n | # Prównań kluczy | # Podmian kluczy " << std::endl; }
+    std::cout << size_global << " " << counter_if << " " << counter_swap << std::endl;
 
     return 1;
 }
