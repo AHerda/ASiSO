@@ -3,8 +3,7 @@
   
     #projekty {
       margin-top: auto;
-      flex-direction: row;
-      flex-wrap: wrap;
+      @include flex("row", true);
     }
   
     .projekt {

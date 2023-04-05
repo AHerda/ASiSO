@@ -5,11 +5,13 @@ body {
   min-height: 98vh;
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   margin: 0; }
 
 header {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   height: auto;
   background-color: #19A7CE;
   color: #000000;
@@ -47,17 +49,21 @@ h1.bez_zdjecia {
 main {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   margin-top: auto 0;
   padding: 10px;
   justify-content: flex-start; }
 
 #projekty {
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: space-evenly; }
 
 .projekt {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: space-evenly;
   padding: 10px;
   border-radius: 5%;
@@ -120,6 +126,7 @@ a:link, a:visited {
 @media only screen and (max-width: 500px) {
   /*Strona z projektami*/
   #projekty {
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap; }
 
@@ -175,6 +182,7 @@ a:link, a:visited {
   /*Strona z projektami*/
   #projekty {
     margin-top: auto;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap; }
 

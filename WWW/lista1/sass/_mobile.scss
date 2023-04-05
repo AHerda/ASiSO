@@ -2,8 +2,7 @@
     /*Strona z projektami*/
   
     #projekty {
-      flex-direction: column;
-      flex-wrap: wrap;
+        @include flex("column", true);
     }
   
     .projekt {

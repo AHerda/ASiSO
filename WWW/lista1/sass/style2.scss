@@ -4,14 +4,12 @@ body {
   background-color: map-get($colors, "white");
   color: map-get($colors, "black");
   min-height: 98vh;
-  display: flex;
-  flex-direction: column;
+  @include flex("column");
   margin: 0;
 }
 
 header {
-  display: flex;
-  flex-direction: row;
+  @include flex("row");
   height: auto;
   background-color: map-get($colors, "light-blue");
   color: map-get($colors, "black");
@@ -64,21 +62,19 @@ h1.bez_zdjecia {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+  @include flex("column");
   margin-top: auto 0;
   padding: 10px;
   justify-content: flex-start;
 }
 
 #projekty {
-  display: flex;
+  @include flex("column");
   justify-content: space-evenly;
 }
 
 .projekt {
-  display: flex;
-  flex-direction: column;
+  @include flex("column");
   justify-content: space-evenly;
   padding: 10px;
   border-radius: 5%;
