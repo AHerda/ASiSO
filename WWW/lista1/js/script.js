@@ -15,10 +15,12 @@ var _currentDropPiece;
 
 var _mouse;
 
+window.onload = init;
+
 function init() {
     _img = new Image();
     _img.addEventListener('load', onImage);
-    _img.src = "zdjecia/ukladanka.jpg";
+    _img.src = "ukladanka.jpg";
 }
 
 function onImage() {
@@ -254,6 +256,22 @@ function resetPuzzleAndCheckWin() {
     _stage.clearRect(0, 0, _puzzleWidth, _puzzleHeight);
     var gameWin = true;
     for(const piece in _pieces) {
-        _stage.drawImage(_img, piece.sx, piece.sy, _pieceWidth, _pieceHeight, piece.xPos, piece.yPos)
+        _stage.drawImage(_img, piece.sx, piece.sy, _pieceWidth, _pieceHeight, piece.xPos, piece.yPos, _pieceWidth, _pieceHeight);
+        _stage.strokeRect(piece.xPos, piece.yPos, _pieceWidth, _pieceHeight);
+
+        if(piece.xPos != piece.sx || piece.yPos != piece.sy) {
+            gameWin = false;
+        }
     }
+
+    if(gameWin) {
+        setTimeout(gameOver, 1000);
+    }
+}
+
+function gameOver() {
+    document.onmousedown = null;
+    document.onmousemove = null;
+    document.onmouseup = null;
+    init();
 }
