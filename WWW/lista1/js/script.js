@@ -19,7 +19,7 @@ window.onload = init;
 
 function init() {
     _img = new Image();
-    _img.addEventListener('load', onImage);
+    _img.addEventListener('load', onImage, false);
     _img.src = "ukladanka.jpg";
 }
 
@@ -33,7 +33,7 @@ function onImage() {
 }
 
 function setCanvas() {
-    _canvas = document.getElementById("ukladanka");
+    _canvas = document.querySelector("#ukladanka");
     _stage = _canvas.getContext("2d");
     _canvas.width = _puzzleWidth;
     _canvas.height = _puzzleHeight;
@@ -45,7 +45,7 @@ function initPuzzle() {
     _mouse = {x: 0, y: 0};
     _currentPiece = null;
     _currentDropPiece = null;
-    _stage.drawImage(_img, 0, 0, _puzzleWidth, _pieceHeight, 0, 0);
+    _stage.drawImage(_img, 0, 0, _puzzleWidth, _puzzleHeight, 0, 0, _puzzleWidth, _puzzleHeight);
     createTitle("costam costam idk jeszcze");
     buildPieces();
 }
@@ -59,7 +59,7 @@ function createTitle(msg) {
     _stage.textAlign = "center";
     _stage.textBaseline = "middle";
     _stage.font = "20px Arial";
-    _stage.fillText(msg, _puzzleWidth / 2, _puzzleHeight / 2);
+    _stage.fillText(msg, _puzzleWidth / 2, _puzzleHeight - 20);
 }
 
 function buildPieces() {
@@ -85,6 +85,35 @@ function buildPieces() {
 }
 
 function shufflePuzzle() {
+    _pieces = shuffleArray(_pieces);
+	_stage.clearRect(0, 0, _puzzleWidth, _puzzleHeight);
+	let xPos = 0;
+	let yPos = 0;
+	for (const piece of _pieces) {
+		piece.xPos = xPos;
+		piece.yPos = yPos;
+		_stage.drawImage(
+			_img,
+			piece.sx,
+			piece.sy,
+			_pieceWidth,
+			_pieceHeight,
+			xPos,
+			yPos,
+			_pieceWidth,
+			_pieceHeight
+		);
+		_stage.strokeRect(xPos, yPos, _pieceWidth, _pieceHeight);
+		xPos += _pieceWidth;
+		if (xPos >= _puzzleWidth) {
+			xPos = 0;
+			yPos += _pieceHeight;
+		}
+	}
+	document.onpointerdown = onPuzzleClick;
+}
+
+function shufflePuzzle2() {
     _stage.clearRect(0, 0, _puzzleWidth, _puzzleHeight);
 
     var i;
@@ -109,6 +138,8 @@ function shufflePuzzle() {
             yPos += _pieceHeight;
         }
     }
+
+    document.onmousedown = onPuzzleClick;
 }
 
 function shuffleArray(o){
@@ -209,7 +240,7 @@ function updatePuzzle(e) {
     var piece;
     for(i = 0; i < _pieces.length; i++) {
         piece = _pieces[i];
-        if(piece == _currentPiece) {
+        if(piece === _currentPiece) {
             continue;
         }
 
@@ -255,7 +286,7 @@ function pieceDropped(e) {
 function resetPuzzleAndCheckWin() {
     _stage.clearRect(0, 0, _puzzleWidth, _puzzleHeight);
     var gameWin = true;
-    for(const piece in _pieces) {
+    for(const piece of _pieces) {
         _stage.drawImage(_img, piece.sx, piece.sy, _pieceWidth, _pieceHeight, piece.xPos, piece.yPos, _pieceWidth, _pieceHeight);
         _stage.strokeRect(piece.xPos, piece.yPos, _pieceWidth, _pieceHeight);
 
