@@ -4,7 +4,9 @@ const PUZZLE_HOVER_TINT = "#000000";
 var _canvas;
 var _stage;
 
-var _img;
+var _img = new Image();
+_img.src = "ukladanka.jpg";
+
 var _pieces;
 var _puzzleWidth;
 var _puzzleHeight;
@@ -15,12 +17,8 @@ var _currentDropPiece;
 
 var _mouse;
 
-window.onload = init;
-
 function init() {
-    _img = new Image();
     _img.addEventListener('load', onImage, false);
-    _img.src = "ukladanka.jpg";
 }
 
 function onImage() {
@@ -110,7 +108,7 @@ function shufflePuzzle() {
 			yPos += _pieceHeight;
 		}
 	}
-	document.onpointerdown = onPuzzleClick;
+	document.onmousedown = onPuzzleClick;
 }
 
 function shufflePuzzle2() {
