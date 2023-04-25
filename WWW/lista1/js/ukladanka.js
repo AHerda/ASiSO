@@ -17,6 +17,8 @@ var _currentDropPiece;
 
 var _mouse;
 
+window.onload = init;
+
 function init() {
     _img.addEventListener('load', onImage, false);
 }

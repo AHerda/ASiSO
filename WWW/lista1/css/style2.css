@@ -117,7 +117,6 @@ footer {
 
 #Kontakt {
   margin: auto;
-  text-decoration-line: underline;
 }
 
 aside#dane {
@@ -193,39 +192,50 @@ a:link, a:visited {
   transition: all 0.3s ease;
   background-color: #F6F1F1;
 }
-@media (max-width: 1024px) {
-  .navbar {
-    /*.hamburger.active .bar:nth-child(2){
-        opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1){
-        transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(3){
-        transform: translateY(-8px) rotate(-45deg);
-    }*/
-  }
+@media (max-width: 500px) {
   .navbar .hamburger {
     display: block;
+    margin: 5px;
+  }
+  .navbar .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
   .navbar .nav-menu {
+    margin: auto;
+    padding: auto;
     position: static;
     display: none;
-    left: 100%;
+    right: 0;
+    left: 0;
     top: 0px;
-    gap: 0;
-    flex-direction: column;
-    background-color: #19A7CE;
+    gap: 5px;
+    background-color: #146C94;
+    color: #F6F1F1;
     width: 100%;
     text-align: center;
-    transition: 0.3s;
+    transition: 1s;
+    border-radius: 20px;
   }
   .navbar .nav-item {
-    margin: 16px 0;
+    margin: 16px;
   }
   .navbar .nav-menu.active {
-    left: 0;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .navbar a {
+    color: #F6F1F1;
+    text-decoration: none;
   }
 }
 
@@ -292,6 +302,16 @@ a:link, a:visited {
   #kod_figura pre {
     margin: auto;
     overflow: scroll;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 20px;
+  }
+  .bez_zdjecia #nav-menu {
+    padding: 10px;
   }
 }
 @media only screen and (min-width: 501px) {

@@ -45,11 +45,13 @@
         transition: all 0.3s ease;
         background-color: map-get($colors, "white");
     }
-    @media(max-width:1024px){
+
+    @media(max-width: 500px){
         .hamburger{
             display: block;
+            margin: 5px;
         }
-        /*.hamburger.active .bar:nth-child(2){
+        .hamburger.active .bar:nth-child(2){
             opacity: 0;
         }
         .hamburger.active .bar:nth-child(1){
@@ -57,25 +59,37 @@
         }
         .hamburger.active .bar:nth-child(3){
             transform: translateY(-8px) rotate(-45deg);
-        }*/
+        }
         .nav-menu{
+            margin: auto;
+            padding: auto;
             position: static;
             display: none;
-            left: 100%;
+            right: 0;
+            left: 0;
             top: 0px;
-            gap: 0;
-            flex-direction: column;
-            background-color: map-get($colors, "light-blue");
+            gap: 5px;
+            background-color: map-get($colors, "dark-blue");
+            color: map-get($colors, "white");
             width: 100%;
             text-align: center;
-            transition: 0.3s;
+            transition: 1s;
+            border-radius: 20px;
         }
         .nav-item{
-            margin: 16px 0;
+            margin: 16px;
         }
-        .nav-menu.active{
-            left: 0;
-            display: block;
+
+        .nav-menu.active {
+            @include flex("column");
+            margin: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        a {
+            color: map-get($colors, "white");
+            text-decoration: none;
         }
     }
 }
