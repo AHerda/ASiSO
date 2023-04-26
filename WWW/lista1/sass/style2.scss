@@ -120,7 +120,6 @@ footer {
 
 p#Kontakt {
   margin: auto;
-  text-decoration-line: underline;
 }
 
 aside#dane {
@@ -149,5 +148,11 @@ a {
   }
 }
 
+#imgs {
+  @include flex("row");
+}
+
+@import "_ukladanka.scss";
+@import "_menu.scss";
 @import "_mobile.scss";
 @import "_desktop.scss";
