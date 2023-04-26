@@ -1,4 +1,4 @@
-const form = document.querySelector('form');
+/*const form = document.querySelector('form');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -14,4 +14,14 @@ form.addEventListener('submit', (event) => {
     }
 
     reader.readAsDataURL(zdjecie);
-});
+});*/
+
+document.getElementById('btn').onclick = function() {
+    var val = document.getElementById('imagename').value,
+        src = 'www.example.com/Category-3/Images/' + val +'.png',
+        img = document.createElement('img');
+        img.src = src;
+        img.setAttribute('width', '190px');
+        img.setAttribute('height', '190px');
+        document.body.appendChild(img);
+}

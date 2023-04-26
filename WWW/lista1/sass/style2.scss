@@ -147,6 +147,12 @@ a {
     color: map-get($colors, "black");
   }
 }
+
+#imgs {
+  @include flex("row");
+}
+
+@import "_ukladanka.scss";
 @import "_menu.scss";
 @import "_mobile.scss";
 @import "_desktop.scss";

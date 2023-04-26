@@ -47,22 +47,28 @@
                 </nav>
             </div>
 		</header>
-        <main>
-            <form>
+        <main id="ukladanka">
+            <!---<form>
                 <label for="rozmiar">Wybierz rozmiar planszy:</label>
                 <input type="number" id="difficulty" name="trudność" value=3>
 
                 <label for="zdjecie">Wklej zdjęcie:</label>
-                <select id="imgs" size="4" multiple>
-                    <option value="./zdjecia/20220429_162955.jpg" data-img-src="./zdjecia/20220429_162955.jpg"></option>
-                    <option value="./zdjecia/20220903_180231(0).jpg"><img src="./zdjecia/20220903_180231(0).jpg"></option>
-                    <option value="./zdjecia/20230101_161812.jpg"><img src="./zdjecia/20230101_161812.jpg"></option>
-                    <option value="./zdjecia/20220528_133916.jpg"><img src="./zdjecia/20220528_133916.jpg"></option>
+                <select id="imgs" size="4">
+                    <option value="./zdjecia/20220429_162955.jpg">zdj 1</option>
+                    <option value="./zdjecia/20220903_180231(0).jpg">zdj 2</option>
+                    <option value="./zdjecia/20230101_161812.jpg">zdj 3</option>
+                    <option value="./zdjecia/20220528_133916.jpg">zdj 4</option>
                 </select>
 
                 <button type="submit">Wyślij</button>
-            </form>
-			<canvas id="ukladanka"></canvas>
+            </form>--->
+			<div id="board">
+                <div id="content">
+                    Size: <input id="size" type="number" min="2" max="5" value="4">
+                    <button id="reset">Reset</button>
+                </div>
+                <canvas id="display"></canvas>
+            </div>
         </main>
         <footer>
 	    	<p>Strona stworzona przez Adriana Herde, 2023</p>
