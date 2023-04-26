@@ -115,8 +115,9 @@ footer {
   text-align: center;
 }
 
-#Kontakt {
+p#Kontakt {
   margin: auto;
+  text-decoration-line: underline;
 }
 
 aside#dane {
@@ -134,109 +135,13 @@ aside#dane {
   background-color: #146C94;
 }
 
-#Kontakt:focus + aside#dane, aside#dane:hover, aside#dane:focus {
+p#Kontakt:focus + aside#dane, aside#dane:hover, aside#dane:focus {
   display: block;
   z-index: 3;
 }
 
 a:link, a:visited {
   color: #000000;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-.navbar * {
-  padding: 0;
-  margin: 0;
-}
-.navbar header {
-  background-color: #146C94;
-}
-.navbar li {
-  list-style: none;
-}
-.navbar a {
-  color: #000000;
-}
-.navbar .nav-branding {
-  font-size: 2rem;
-}
-.navbar .nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 10px;
-  padding-left: 0;
-}
-.navbar .nav-link {
-  transition: 0.3s ease-out;
-}
-.navbar .nav-link:hover {
-  color: #19A7CE;
-}
-.navbar .hamburger {
-  display: none;
-  cursor: pointer;
-}
-.navbar .bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  background-color: #F6F1F1;
-}
-@media (max-width: 500px) {
-  .navbar .hamburger {
-    display: block;
-    margin: 5px;
-  }
-  .navbar .hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .navbar .hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .navbar .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-  .navbar .nav-menu {
-    margin: auto;
-    padding: auto;
-    position: static;
-    display: none;
-    right: 0;
-    left: 0;
-    top: 0px;
-    gap: 5px;
-    background-color: #146C94;
-    color: #F6F1F1;
-    width: 100%;
-    text-align: center;
-    transition: 1s;
-    border-radius: 20px;
-  }
-  .navbar .nav-item {
-    margin: 16px;
-  }
-  .navbar .nav-menu.active {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin: auto;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  .navbar a {
-    color: #F6F1F1;
-    text-decoration: none;
-  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -303,16 +208,6 @@ a:link, a:visited {
     margin: auto;
     overflow: scroll;
   }
-  form {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 15px;
-    padding: 20px;
-  }
-  .bez_zdjecia #nav-menu {
-    padding: 10px;
-  }
 }
 @media only screen and (min-width: 501px) {
   /*Strona z projektami*/
@@ -364,13 +259,6 @@ a:link, a:visited {
   }
   #galeria > img:last-child:hover {
     transform: scale(2.64);
-  }
-  form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 30px;
-    padding: 20px;
   }
 }
 
