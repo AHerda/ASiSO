@@ -118,7 +118,7 @@ footer {
   text-align: center;
 }
 
-#Kontakt {
+p#Kontakt {
   margin: auto;
 }
 
@@ -137,7 +137,7 @@ aside#dane {
   background-color: map-get($colors, "dark-blue");
 }
 
-#Kontakt:focus + aside#dane, aside#dane:hover, aside#dane:focus {
+p#Kontakt:focus + aside#dane, aside#dane:hover, aside#dane:focus {
   display: block;
   z-index: 3;
 }
