@@ -1,9 +1,13 @@
-/* Error: Can't find stylesheet to import.
- *     ,
- * 156 | @import "_menu.scss";
- *     |         ^^^^^^^^^^^^
- *     '
- *   sass\style2.scss 156:9  root stylesheet */
+@charset "UTF-8";
+body {
+  background-color: #F6F1F1;
+  color: #000000;
+  min-height: 98vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0;
+}
 
 header {
   display: flex;
@@ -420,3 +424,5 @@ a:link, a:visited {
     padding: 20px;
   }
 }
+
+/*# sourceMappingURL=style2.css.map */
