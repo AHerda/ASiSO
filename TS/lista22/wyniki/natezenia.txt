@@ -1,0 +1,11 @@
+p = 0.8, T_max = 0.1, m = 128, niezawodnosc poczatkowa 0.823
+Maksymalna liczba wysylanych pakietow: 10 Niezawodnosc: 0.788
+Maksymalna liczba wysylanych pakietow: 15 Niezawodnosc: 0.813
+Maksymalna liczba wysylanych pakietow: 20 Niezawodnosc: 0.8
+Maksymalna liczba wysylanych pakietow: 25 Niezawodnosc: 0.784
+Maksymalna liczba wysylanych pakietow: 30 Niezawodnosc: 0.796
+Maksymalna liczba wysylanych pakietow: 35 Niezawodnosc: 0.735
+Maksymalna liczba wysylanych pakietow: 40 Niezawodnosc: 0.681
+Maksymalna liczba wysylanych pakietow: 45 Niezawodnosc: 0.581
+Maksymalna liczba wysylanych pakietow: 50 Niezawodnosc: 0.467
+Maksymalna liczba wysylanych pakietow: 55 Niezawodnosc: 0.377
