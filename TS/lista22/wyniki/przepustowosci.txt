@@ -1,6 +1,0 @@
-p = 0.8, T_max = 0.1, m = 128, niezawodnosc poczatkowa 0.167
-Przepustowosci zwiekszone 1.0625-krotnie Niezawodnosc: 0.373
-Przepustowosci zwiekszone 1.12890625-krotnie Niezawodnosc: 0.549
-Przepustowosci zwiekszone 1.199462890625-krotnie Niezawodnosc: 0.659
-Przepustowosci zwiekszone 1.2744293212890625-krotnie Niezawodnosc: 0.711
-Przepustowosci zwiekszone 1.354081153869629-krotnie Niezawodnosc: 0.726
