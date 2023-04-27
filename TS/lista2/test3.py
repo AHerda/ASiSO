@@ -47,5 +47,5 @@ def draw_plot(dane):
 
     plt.plot(np.linspace(0, 10, 11, True, dtype=int), dane, "b-o")
 
-    plt.savefig("lista22/wykresy/test3.png", dpi=300)
+    plt.savefig("wykresy/test3.png", dpi=300)
     plt.close()

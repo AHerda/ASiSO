@@ -26,11 +26,11 @@ def test1(p, T_max, m, plot = False):
 def draw_plot(dane):
     plt.figure()
 
-    plt.title("Wykres niezawodności od warości natężeń")
+    plt.title("Wykres niezawodności od wartości natężeń")
     plt.xlabel("Natężenia należą do zakresu [0, x]")
     plt.ylabel("Niezawodność")
 
     plt.plot(np.linspace(5, 5 + 10 * 7, 11, True), dane, "b-o")
 
-    plt.savefig("lista22/wykresy/test1.png", dpi=300)
+    plt.savefig("wykresy/test1.png", dpi=300)
     plt.close()

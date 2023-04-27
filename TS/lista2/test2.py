@@ -37,5 +37,5 @@ def draw_plot(dane, wyniki):
 
     plt.plot(dane, wyniki, "b-o")
 
-    plt.savefig("lista22/wykresy/test2.png", dpi=300)
+    plt.savefig("wykresy/test2.png", dpi=300)
     plt.close()

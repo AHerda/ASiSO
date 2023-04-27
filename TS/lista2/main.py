@@ -10,11 +10,11 @@ def main():
     matrix = make_matrix(n, 5)
     #generate_capacity(graph, matrix, 8)
     #generate_flow(graph, matrix)
-    draw_graph(graph)
+    """draw_graph(graph)
     print(matrix)
-    print(calculate_reliability(graph, matrix, 0.9, 0.2, 128))
+    print(calculate_reliability(graph, matrix, 0.9, 0.2, 128))"""
 
-    #print(test1(0.8, 0.1, 128, True))
+    print(test1(0.8, 0.1, 128, True))
     #print(test2(0.8, 0.1, 128, 1.1, True))
     #print(test3(0.8, 0.1, 128, True))
 
