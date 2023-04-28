@@ -1,16 +1,16 @@
 from util import *
 
 #funkcja zwiekszajaca przepustowosci krawedzi
-def increase_capacity(graph, mul):
+def increase_capacity(graph, mul, i):
     for i in range(20):
         for edge in graph.edges(i, data = True):
-            edge[2]["c"] *= mul
+            edge[2]["c"] = edge[2]["c"] / (1 + (i * mul)) * (1 + (mul * (i + 1)))
 
 def test2(p, T_max, m, mul, plot = False):
     graph = make_graph()
     matrix = make_matrix(20, 50)
-    generate_capacity(graph, matrix, m//16)
     generate_flow(graph, matrix)
+    generate_capacity(graph, matrix, m//16)
 
     out = np.zeros(11)
     dane = np.zeros(11)
@@ -19,9 +19,9 @@ def test2(p, T_max, m, mul, plot = False):
     dane[0] = 1
 
     for i in range(10):
-        increase_capacity(graph, mul)
+        increase_capacity(graph, mul, i)
         out[i + 1] = calculate_reliability(graph, matrix, p, T_max, m)
-        dane[i + 1] = dane[i] * mul
+        dane[i + 1] = dane[0] * (1 + (i + 1) * mul)
     
     if plot:
         draw_plot(dane, out)

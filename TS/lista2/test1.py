@@ -8,8 +8,8 @@ def increase(matrix, increment):
 def test1(p, T_max, m, plot = False):
     graph = make_graph()
     matrix = make_matrix(20, 5)
-    generate_capacity(graph, matrix, m)
     generate_flow(graph, matrix)
+    generate_capacity(graph, matrix, m)
 
     out = np.zeros(11)
     out[0] = (calculate_reliability(graph, matrix, p, T_max, m))

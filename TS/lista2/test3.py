@@ -1,5 +1,6 @@
 from util import *
 
+
 #funkcja generujaca dwa losowe wierzcholki do polaczenia
 def add_edge(graph, capacity):
     i = randint(0, 19)
@@ -7,6 +8,7 @@ def add_edge(graph, capacity):
     while i == j or (i,j) in edg or (j,i) in edg:
         i = randint(0, 19)
         j = randint(0, 19)
+        edg.append((i, j))
     graph.add_edge(i, j, a = 0, c = capacity)
 
 #funkcja liczaca srednia przepustowosc wszystich krawedzi grafu
@@ -22,6 +24,7 @@ def avg_cap(graph):
 def test3(p, T_max, m, plot = False):
     graph = make_graph()
     matrix = make_matrix(20, 50)
+    generate_flow(graph, matrix)
     generate_capacity(graph, matrix, m)
 
     capacity = avg_cap(graph)
