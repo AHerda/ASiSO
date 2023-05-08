@@ -1,4 +1,4 @@
-all: generator select rand_select select_5 bin_search quick
+all: generator select rand_select select_5 bin_search quick dual_quick
 
 generator: generator.cpp
 	g++ -O3 -o generator generator.cpp
@@ -17,6 +17,9 @@ bin_search: bin_search.cpp
 
 quick: quick.cpp
 	g++ -O3 -o quick quick.cpp
+
+dual_quick: dual_quick.cpp
+	g++ -O3 -o dual_quick dual_quick.cpp
 
 git:
 	git add *pp

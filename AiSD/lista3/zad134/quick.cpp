@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
 
     auto start = std::chrono::high_resolution_clock::now();
 
-    quick_sort_old(tab, 0, size_global - 1);
+    quick_sort(tab, 0, size_global - 1);
 
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
@@ -89,7 +89,7 @@ void quick_sort_old(int* tab, int lewy, int prawy) {
 	
 	int i = lewy - 1;
 	int j = prawy + 1;
-	int pivot = tab[(lewy + prawy) / 2];
+	int pivot = tab[prawy];
 	
 	while(1) {
         counter_if++;

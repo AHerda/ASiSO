@@ -91,3 +91,31 @@ int partition2(int tab[], int l, int r) {
 
     return i;
 }
+
+// Zapasowe implementacje
+
+void quick_sort(int* tab, int lewy, int prawy, bool count) {
+	if(prawy <= lewy) return;
+	
+	int i = lewy - 1;
+	int j = prawy + 1;
+	int pivot = tab[(lewy + prawy) / 2];
+	
+	while(1) {
+		while(pivot > tab[++i]);
+
+		while(pivot < tab[--j]);
+		
+		if(i <=  j) {
+            swap(&tab[i], &tab[j]);
+        }
+		else {
+            break;
+        }
+	}    
+	
+	if(j > lewy)
+		quick_sort(tab, lewy, j);
+	if(i < prawy)
+		quick_sort(tab, i, prawy);
+}
