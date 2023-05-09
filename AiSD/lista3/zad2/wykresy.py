@@ -514,10 +514,10 @@ plt.title("Wykres ilości porównań kluczy dla quick sortów")
 plt.xlabel("n")
 plt.ylabel("Średnia # porównań kluczy")
 
-plt.plot(quick_new_n, quick_new_c, "g-", label = "Nowy Quick sort")
-plt.plot(quick_old_n, quick_old_c, "c-", label = "Stary Quick sort")
-plt.plot(dual_quick_new_n, dual_quick_new_c, "m-", label = "Nowy Dual quick sort")
-plt.plot(dual_quick_old_n, dual_quick_old_c, "r-", label = "Stary Dual quick sort")
+plt.plot(avg_quick_new_n, avg_quick_new_c, "g-", label = "Nowy Quick sort")
+plt.plot(avg_quick_old_n, avg_quick_old_c, "c-", label = "Stary Quick sort")
+plt.plot(avg_dual_quick_new_n, avg_dual_quick_new_c, "m-", label = "Nowy Dual quick sort")
+plt.plot(avg_dual_quick_old_n, avg_dual_quick_old_c, "r-", label = "Stary Dual quick sort")
 
 plt.legend(loc = 2, fontsize = "small")
 
@@ -530,10 +530,10 @@ plt.title("Wykres czasu dla quick sortów")
 plt.xlabel("n")
 plt.ylabel("Średni czas")
 
-plt.plot(quick_new_n, quick_new_t, "g-", label = "Nowy Quick sort")
-plt.plot(quick_old_n, quick_old_t, "c-", label = "Stary Quick sort")
-plt.plot(dual_quick_new_n, dual_quick_new_t, "m-", label = "Nowy Dual quick sort")
-plt.plot(dual_quick_old_n, dual_quick_old_t, "r-", label = "Stary Dual quick sort")
+plt.plot(avg_quick_new_n, avg_quick_new_t, "g-", label = "Nowy Quick sort")
+plt.plot(avg_quick_old_n, avg_quick_old_t, "c-", label = "Stary Quick sort")
+plt.plot(avg_dual_quick_new_n, avg_dual_quick_new_t, "m-", label = "Nowy Dual quick sort")
+plt.plot(avg_dual_quick_old_n, avg_dual_quick_old_t, "r-", label = "Stary Dual quick sort")
 
 plt.legend(loc = 2, fontsize = "small")
 
@@ -546,9 +546,9 @@ plt.title("Wykres ilości porównań kluczy dla quick sortów")
 plt.xlabel("n")
 plt.ylabel("Średnia # porównań kluczy")
 
-plt.plot(quick_new_n, quick_new_c, "g-", label = "Nowy Quick sort")
-plt.plot(dual_quick_new_n, dual_quick_new_c, "m-", label = "Nowy Dual quick sort")
-plt.plot(dual_quick_old_n, dual_quick_old_c, "r-", label = "Stary Dual quick sort")
+plt.plot(avg_quick_new_n, avg_quick_new_c, "g-", label = "Nowy Quick sort")
+plt.plot(avg_dual_quick_new_n, avg_dual_quick_new_c, "m-", label = "Nowy Dual quick sort")
+plt.plot(avg_dual_quick_old_n, avg_dual_quick_old_c, "r-", label = "Stary Dual quick sort")
 
 plt.legend(loc = 2, fontsize = "small")
 
@@ -561,9 +561,9 @@ plt.title("Wykres czasu dla quick sortów")
 plt.xlabel("n")
 plt.ylabel("Średni czas")
 
-plt.plot(quick_new_n, quick_new_t, "g-", label = "Nowy Quick sort")
-plt.plot(dual_quick_new_n, dual_quick_new_t, "m-", label = "Nowy Dual quick sort")
-plt.plot(dual_quick_old_n, dual_quick_old_t, "r-", label = "Stary Dual quick sort")
+plt.plot(avg_quick_new_n, avg_quick_new_t, "g-", label = "Nowy Quick sort")
+plt.plot(avg_dual_quick_new_n, avg_dual_quick_new_t, "m-", label = "Nowy Dual quick sort")
+plt.plot(avg_dual_quick_old_n, avg_dual_quick_old_t, "r-", label = "Stary Dual quick sort")
 
 plt.legend(loc = 2, fontsize = "small")
 
