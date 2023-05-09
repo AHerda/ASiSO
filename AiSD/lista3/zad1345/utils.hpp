@@ -50,8 +50,9 @@ int partition2(int tab[], int l, int r);
 
 // Zadanie 3
 int select(int tab[], int l, int r, int k, int partitions);
-int partition_5(int tab[], int l, int r, int partitions);
-int* find_median(int tab[], int l, int r, int k);
+int partition_5(int tab[], int l, int r, int index, int k);
+int median(int tab[], int l, int r, int k);
+int insertion(int tab[], int l, int r);
 
 // Zadanie 4
 int bin_search(int tab[], int l, int r, int x);

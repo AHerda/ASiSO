@@ -24,6 +24,8 @@ int main(int argc, char** argv) {
 
         sscanf(argv[1], "%d", &k);
         partitions = 5;
+
+        k--;
     }
     else if(argc == 3) {
         setbuf(stdin, NULL);
@@ -37,6 +39,8 @@ int main(int argc, char** argv) {
 
         sscanf(argv[1], "%d", &k);
         sscanf(argv[2], "%d", &partitions);
+
+        k--;
     }
     else {
         size_global = argc - 2;
@@ -72,81 +76,65 @@ int main(int argc, char** argv) {
     return 1;
 }
 
+
 int select(int tab[], int l, int r, int k, int partitions) {
-    if(size_global <= 50) {
-        print_tab(tab, r - l + 1, l);
+    int n = r - l + 1;
+    if (n == 1 && k == 0) return tab[0];
+
+    int m = (n + partitions - 1) / partitions;
+    int *medians = new int[m];
+
+    for (int i = 0; i < m; i++) {
+        if (partitions * i + partitions - 1 < n) {
+            int *w = tab + partitions * i;
+
+            for (int j0 = 0; j0 < partitions - 2; j0++) {
+                int jmin = j0;
+                for (int j = j0 + 1; j < partitions; j++) {
+                    counter_if++;
+                    if(w[j] < w[jmin]) jmin = j;
+                }
+                swap(&w[j0], &w[jmin], &counter_swap);
+            }
+            medians[i] = w[partitions / 2];
+        }
+        else {
+            medians[i] = tab[partitions * i];
+        }
     }
 
-    if(k > 0 && k <= r - l + 1) {
-        int i = partition_5(tab, l, r, partitions);
+    int pivot = select(medians, 0, m - 1, m / 2, partitions);
+    delete [] medians;
 
-        if(i - l + 1 == k) {
-            return tab[i];
-        }
-        else if(i - l + 1 > k) {
-            return select(tab, l, i - 1, k, partitions);
-        }
-        else return select(tab, i + 1, r, k - i + l - 1, partitions);
-    }
-    std::cout << k << " większe niż tablica\n";
-    return INT_MAX;
-}
-
-int partition_5(int tab[], int l, int r, int partitions) {
-    int* pivot = find_median(tab, l, r, partitions);
-
-    int i = l;
-
-    for(int j = l; j < r; j++) {
+    for (int i = 0; i < n; i++) {
         counter_if++;
-        if(tab[j] <= *pivot) {
-            swap(&tab[i], &tab[j], &counter_swap);
-            i++;
+        if (tab[i] == pivot) {
+            swap(&tab[i], &tab[n - 1], &counter_swap);
+            break;
         }
     }
-    swap(&tab[i], &tab[r], &counter_swap);
 
-    return i;
-}
-
-int* find_median(int tab[], int l, int r, int k) {
-    int partitions = ((r - l + 1) % k) ? (r - l + 1) / k + 1 : (r - l + 1) / k;
-    int* medians = new int[partitions];
-
-    for(int i = 0; i < partitions; i++) {
-        int len = (((r - l + 1) % k) && i + 1 == partitions) ? ((r - l + 1) % k) : k;
-        int* temp = new int[len];
-        for(int j = 0; j <= len; j++) {
-            temp[j] = tab[i * k + l + j];
+    int store = 0;
+    for (int i = 0; i < n - 1; i++) {
+        counter_if++;
+        if (tab[i] < pivot) {
+            swap(&tab[i], &tab[store++], &counter_swap);
         }
-
-        insertion_sort(temp, 0, len - 1);
-
-        medians[i] = temp[len / 2];
     }
+    swap(&tab[store], &tab[n - 1], &counter_swap);
 
-    select(medians, 0, partitions - 1, partitions / 2 + 1, k);
-    return &medians[partitions / 2 + 1];
+    if (store == k) {
+        return pivot;
+    }
+    else if (store > k) {
+        return select(tab, 0, store - 1, k, partitions);
+    }
+    else {
+        return select(tab + store + 1, 0, n - store - 2, k - store - 1, partitions);
+    }
 }
 
 // Zapasowe implementacje
-
-void insertion_sort(int tab[], int l, int r) {
-	for(int i = 1; i <= r - l; i++) {
-		int key = tab[i];
-		int j = i - 1;
-
-        counter_if++;
-		while(j >= 0 && tab[j] > key) {
-			tab[j + 1] = tab[j];
-			j -= 1;
-
-            counter_if++;
-		}
-		
-		tab[j + 1] = key;
-	}
-}
 
 void quick_sort(int* tab, int lewy, int prawy, bool count) {
 	if(prawy <= lewy) return;
